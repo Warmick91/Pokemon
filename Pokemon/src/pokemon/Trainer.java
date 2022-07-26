@@ -7,8 +7,6 @@ public class Trainer {
 	private int potions;
 	private int pokeballs;
 	
-	AttackTechniques instanceAttack = new AttackTechniques();
-	
 	Trainer(String name, int potions, int pokeballs) {
 		this.name = name;
 		this.potions = potions;
