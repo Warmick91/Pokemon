@@ -12,36 +12,38 @@ public class AttackTechniques {
 	protected double defSpeed;
 	protected double attLuck;
 	protected double defLuck;
-	
-	AttackTechniques(){}
-	
-	AttackTechniques(double attLvl, double defLvl, double attAtt, double defDef, double attSpeed,
-			double defSpeed, double attLuck, double defLuck) {
-		this.setAttLvl(attLvl);
-		this.setDefLvl(defLvl);
-		this.setAttAtt(attAtt);
-		this.setDefDef(defDef);
-		this.setAttSpeed(attSpeed);
-		this.setDefSpeed(defSpeed);
-		this.setAttLuck(attLuck);
-		this.setDefLuck(defLuck);
+
+	AttackTechniques() {
 	}
 
-	public double tackle() {
+//	AttackTechniques(String attType, double attLvl, double defLvl, double attAtt, double defDef, double attSpeed,
+//			double defSpeed, double attLuck, double defLuck) {
+//		this.setAttLvl(attLvl);
+//		this.setDefLvl(defLvl);
+//		this.setAttAtt(attAtt);
+//		this.setDefDef(defDef);
+//		this.setAttSpeed(attSpeed);
+//		this.setDefSpeed(defSpeed);
+//		this.setAttLuck(attLuck);
+//		this.setDefLuck(defLuck);
+//	}
 
-		this.attType = "normal";
-		
+	public static double tackle(String attType, double attAtt, double attSpeed, double attLuck, double attLvl, double defDef,
+			double defSpeed, double defLuck, double defLvl) {
+
+		//this.attType = attType;
+
 		// Critical calculation
-		double critChance = (this.attLuck * this.attLvl * 0.1);
-		double critAvoidChance = (this.defLuck * this.defLvl * 0.1);
+		double critChance = (attLuck * attLvl * 0.1);
+		double critAvoidChance = (defLuck * defLvl * 0.1);
 		if (critChance > critAvoidChance) {
-			this.attAtt += 0.05;
+			attAtt += 0.05;
 		}
-		
-		//Attack's process
-		double dmgValue = (this.attAtt - this.defDef);
-		double avoidChance = (this.defSpeed + this.defLuck);
-		double attackChance = (this.attSpeed + this.attLuck);
+
+		// Attack's process
+		double dmgValue = (attAtt - defDef);
+		double avoidChance = (defSpeed + defLuck);
+		double attackChance = (attSpeed + attLuck);
 
 		// Effect
 		if (avoidChance > attackChance) {

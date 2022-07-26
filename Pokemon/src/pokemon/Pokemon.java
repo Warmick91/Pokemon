@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.lang.reflect.Array;
+
 public abstract class Pokemon {
 	
 	protected String typeName;
@@ -98,7 +100,10 @@ public abstract class Pokemon {
 	public void setLuck(double luck) {
 		this.luck = luck;
 	}
-
+	
+	//Attacks pool
+	Double[] attackPool = new Double[4];
+	
 	// Attack
 	public abstract int attack();
 

@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.lang.reflect.Array;
+
 public class Bulbasaur extends Pokemon {
 
 	Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck) {
@@ -26,5 +28,8 @@ public class Bulbasaur extends Pokemon {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
 
+	
+	
 }

@@ -33,7 +33,7 @@ public class IndigoLeague {
 		String choicePokemon = JOptionPane
 				.showInputDialog("Prof. Oak: Choose your Pokemon.\r\n1) Bulbasaur\r\n2) Charmander\r\n3) Squirtle");
 		int choiceIntPokemon = Integer.parseInt(choicePokemon);
-		
+
 		// Teams building
 		Random random = new Random();
 		String pokeSpecies1 = "";
@@ -63,14 +63,25 @@ public class IndigoLeague {
 			pokeSpecies2 = teams.get(name2).getTypeName();
 			break;
 		}
+		
+		//Add attacks to the pool
+		if (teams.get(name1).getTypeName() == "Bulbasaur") {
+			Petalboy.attackPool[0] = AttackTechniques.tackle("normal", Petalboy.getAttackPower(), Petalboy.getSpeed(),
+					Petalboy.getLuck(), Petalboy.getLevel(), teams.get(name2).getDefensePower(),
+					teams.get(name2).getSpeed(), teams.get(name2).getLuck(), teams.get(name2).getDefensePower());
+		} else if (teams.get(name1).getTypeName() == "Charmander") {
 
-		AttackTechniques playerTechniques = new AttackTechniques(teams.get(name1).getLevel(),
-				teams.get(name2).getLevel(), teams.get(name1).getDefensePower(), teams.get(name2).getDefensePower(),
-				teams.get(name1).getSpeed(), teams.get(name2).getSpeed(), teams.get(name1).getLuck(),
-				teams.get(name2).getLuck());
-		AttackTechniques cpuTechniques = new AttackTechniques(teams.get(name2).getLevel(), teams.get(name1).getLevel(),
-				teams.get(name2).getDefensePower(), teams.get(name1).getDefensePower(), teams.get(name2).getSpeed(),
-				teams.get(name1).getSpeed(), teams.get(name2).getLuck(), teams.get(name1).getLuck());
+		} else if (teams.get(name1).getTypeName() == "Squirtle") {
+
+		}
+
+//		AttackTechniques playerTechniques = new AttackTechniques(teams.get(name1).getLevel(),
+//				teams.get(name2).getLevel(), teams.get(name1).getDefensePower(), teams.get(name2).getDefensePower(),
+//				teams.get(name1).getSpeed(), teams.get(name2).getSpeed(), teams.get(name1).getLuck(),
+//				teams.get(name2).getLuck());
+//		AttackTechniques cpuTechniques = new AttackTechniques(teams.get(name2).getLevel(), teams.get(name1).getLevel(),
+//				teams.get(name2).getDefensePower(), teams.get(name1).getDefensePower(), teams.get(name2).getSpeed(),
+//				teams.get(name1).getSpeed(), teams.get(name2).getLuck(), teams.get(name1).getLuck());
 
 		// Gameplay
 		System.out.println("Welcome to the Indigo League!\r\nToday's competitors are " + player1.getName() + " and "
@@ -89,7 +100,7 @@ public class IndigoLeague {
 		String choiceAction = chooseActionPrompt();
 		int choiceActionInt = Integer.parseInt(choiceAction);
 		player1.chooseAction(choiceActionInt, teams.get(name1), teams.get(name2));
-		//AttackTechniques.tackle();
+		
 	}
 
 }

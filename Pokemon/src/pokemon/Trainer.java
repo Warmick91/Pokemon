@@ -6,7 +6,7 @@ public class Trainer {
 	private String name;
 	private int potions;
 	private int pokeballs;
-	
+
 	Trainer(String name, int potions, int pokeballs) {
 		this.name = name;
 		this.potions = potions;
@@ -40,7 +40,13 @@ public class Trainer {
 
 	// Actions
 	public void orderAttack(Pokemon x, Pokemon y) {
-		String attackTypeChoice = JOptionPane.showInputDialog("Attacks:\r\n");
+		String attackTypeChoice = JOptionPane.showInputDialog("Attacks:\r\n1) Tackle");
+		int attackTypeInt = Integer.parseInt(attackTypeChoice);
+		switch (attackTypeInt) {
+		case 1:
+			AttackTechniques.tackle("normal", x.getAttackPower(), x.getSpeed(), x.getLuck(), x.getLevel(), y.getDefensePower(),
+					y.getSpeed(), y.getLuck(), y.getLevel());
+		}
 	}
 
 	public void orderDefense(Pokemon x, Pokemon y) {
