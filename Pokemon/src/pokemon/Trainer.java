@@ -1,10 +1,14 @@
 package pokemon;
 
+import javax.swing.JOptionPane;
+
 public class Trainer {
 	private String name;
 	private int potions;
 	private int pokeballs;
-
+	
+	AttackTechniques instanceAttack = new AttackTechniques();
+	
 	Trainer(String name, int potions, int pokeballs) {
 		this.name = name;
 		this.potions = potions;
@@ -37,11 +41,11 @@ public class Trainer {
 	}
 
 	// Actions
-	public void orderAttack(Pokemon x) {
-
+	public void orderAttack(Pokemon x, Pokemon y) {
+		String attackTypeChoice = JOptionPane.showInputDialog("Attacks:\r\n");
 	}
 
-	public void orderDefense(Pokemon x) {
+	public void orderDefense(Pokemon x, Pokemon y) {
 
 	}
 
@@ -53,16 +57,16 @@ public class Trainer {
 
 	}
 
-	public void chooseAction(int x, Pokemon pok) {
+	public void chooseAction(int x, Pokemon pok1, Pokemon pok2) {
 		switch (x) {
 		case 1:
-			orderAttack(pok);
+			orderAttack(pok1, pok2);
 			break;
 		case 2:
-			orderDefense(pok);
+			orderDefense(pok1, pok2);
 			break;
 		case 3:
-			orderPotion(pok);
+			orderPotion(pok1);
 			break;
 		case 4:
 			throwPokeball();

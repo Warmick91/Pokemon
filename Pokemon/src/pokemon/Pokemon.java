@@ -1,23 +1,32 @@
 package pokemon;
 
 public abstract class Pokemon {
-
+	
+	protected String typeName;
 	protected String name;
 	protected String type;
 	protected String subtype;
-	protected int level;
-	protected int attackPower;
-	protected int defensePower;
-	protected int speed;
-	protected double agility;
-	protected int healthPoints;
-	protected double luck;
+	protected double level; // 1.0 - 100.0
+	protected double attackPower; // 0.0-100.0
+	protected double defensePower; // 0.0 -100.0
+	protected double speed; // 0.0 - 1.0
+	protected double healthPoints; // 0.0 - x
+	protected double luck; //0.0-1.0
 
 	Pokemon() {
 	}
 
+	
 	// Getters and setters
 
+	public String getTypeName() {
+		return this.typeName;
+	}
+	
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -42,7 +51,7 @@ public abstract class Pokemon {
 		this.subtype = subtype;
 	};
 
-	public int getLevel() {
+	public double getLevel() {
 		return level;
 	}
 
@@ -50,7 +59,7 @@ public abstract class Pokemon {
 		this.level = level;
 	}
 
-	public int getAttackPower() {
+	public double getAttackPower() {
 		return attackPower;
 	}
 
@@ -58,7 +67,7 @@ public abstract class Pokemon {
 		this.attackPower = attackPower;
 	}
 
-	public int getDefensePower() {
+	public double getDefensePower() {
 		return defensePower;
 	}
 
@@ -66,7 +75,7 @@ public abstract class Pokemon {
 		this.defensePower = defensePower;
 	}
 
-	public int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
 
@@ -74,15 +83,7 @@ public abstract class Pokemon {
 		this.speed = speed;
 	}
 
-	public double getAgility() {
-		return agility;
-	}
-
-	public void setAgility(int agility) {
-		this.agility = agility;
-	}
-
-	public int getHealthPoints() {
+	public double getHealthPoints() {
 		return healthPoints;
 	}
 

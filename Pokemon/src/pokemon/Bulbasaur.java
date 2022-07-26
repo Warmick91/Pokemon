@@ -2,8 +2,8 @@ package pokemon;
 
 public class Bulbasaur extends Pokemon {
 
-	Bulbasaur(String name, int lvl, String sub, int attPow, int defPow, int speed, double agility, int hp,
-			double luck) {
+	Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck) {
+		this.typeName = "Bulbasaur";
 		this.name = name;
 		this.type = "grass";
 		this.subtype = sub;
@@ -11,7 +11,6 @@ public class Bulbasaur extends Pokemon {
 		this.attackPower = attPow;
 		this.defensePower = defPow;
 		this.speed = speed;
-		this.agility = agility;
 		this.healthPoints = hp;
 		this.luck = luck;
 	}
@@ -27,4 +26,5 @@ public class Bulbasaur extends Pokemon {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }
