@@ -15,13 +15,8 @@ public abstract class Pokemon {
 	protected double healthPoints; // 0.0 - x
 	protected double luck; // 0.0-1.0
 
-	private double attAux;
-	private double defAux;
-
-	Pokemon() {
-		this.attAux = this.attackPower;
-		this.defensePower = this.defAux;
-	}
+	protected double attAux;
+	protected double defAux;
 
 	// Getters and setters
 	public String getTypeName() {

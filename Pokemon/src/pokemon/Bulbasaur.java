@@ -5,6 +5,7 @@ import attacks.Tackle;
 public class Bulbasaur extends Pokemon {
 
 	public Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck) {
+		this.defAux = defPow;
 		this.typeName = "Bulbasaur";
 		this.name = name;
 		this.type = "grass";
@@ -20,6 +21,7 @@ public class Bulbasaur extends Pokemon {
 		this.attacktechniques[0] = new Tackle();
 	}
 
+	
 	@Override
 	public int attack() {
 		// TODO Auto-generated method stub
