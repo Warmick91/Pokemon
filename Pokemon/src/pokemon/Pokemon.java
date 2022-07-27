@@ -1,6 +1,7 @@
 package pokemon;
 
-import java.lang.reflect.Array;
+import attacks.AttackTechniques;
+import attacks.Tackle;
 
 public abstract class Pokemon {
 	
@@ -14,10 +15,6 @@ public abstract class Pokemon {
 	protected double speed; // 0.0 - 1.0
 	protected double healthPoints; // 0.0 - x
 	protected double luck; //0.0-1.0
-
-	Pokemon() {
-	}
-
 	
 	// Getters and setters
 
@@ -65,7 +62,7 @@ public abstract class Pokemon {
 		return attackPower;
 	}
 
-	public void setAttackPower(int attackPower) {
+	public void setAttackPower(double attackPower) {
 		this.attackPower = attackPower;
 	}
 
@@ -73,7 +70,7 @@ public abstract class Pokemon {
 		return defensePower;
 	}
 
-	public void setDefensePower(int defensePower) {
+	public void setDefensePower(double defensePower) {
 		this.defensePower = defensePower;
 	}
 
@@ -81,7 +78,7 @@ public abstract class Pokemon {
 		return speed;
 	}
 
-	public void setSpeed(int speed) {
+	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
 
@@ -89,7 +86,7 @@ public abstract class Pokemon {
 		return healthPoints;
 	}
 
-	public void setHealthPoints(int healthPoints) {
+	public void setHealthPoints(double healthPoints) {
 		this.healthPoints = healthPoints;
 	}
 
@@ -101,8 +98,8 @@ public abstract class Pokemon {
 		this.luck = luck;
 	}
 	
-	//Attacks pool
-	Double[] attackPool = new Double[4];
+	//Attacks pool	
+	AttackTechniques[] attacktechniques = new AttackTechniques[4];
 	
 	// Attack
 	public abstract int attack();

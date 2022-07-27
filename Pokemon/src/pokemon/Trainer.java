@@ -44,8 +44,7 @@ public class Trainer {
 		int attackTypeInt = Integer.parseInt(attackTypeChoice);
 		switch (attackTypeInt) {
 		case 1:
-			AttackTechniques.tackle("normal", x.getAttackPower(), x.getSpeed(), x.getLuck(), x.getLevel(), y.getDefensePower(),
-					y.getSpeed(), y.getLuck(), y.getLevel());
+			
 		}
 	}
 

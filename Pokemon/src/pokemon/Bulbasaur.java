@@ -1,6 +1,6 @@
 package pokemon;
 
-import java.lang.reflect.Array;
+import attacks.Tackle;
 
 public class Bulbasaur extends Pokemon {
 
@@ -15,6 +15,9 @@ public class Bulbasaur extends Pokemon {
 		this.speed = speed;
 		this.healthPoints = hp;
 		this.luck = luck;
+		
+		//Attacks pool
+		this.attacktechniques[0] = new Tackle();
 	}
 
 	@Override
@@ -29,7 +32,7 @@ public class Bulbasaur extends Pokemon {
 		return 0;
 	}
 	
-
+	
 	
 	
 }
