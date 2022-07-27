@@ -1,10 +1,16 @@
-package pokemon;
+package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
+
+import pokemon.Bulbasaur;
+import pokemon.Charmander;
+import pokemon.Pokemon;
+import pokemon.Squirtle;
+import pokemon.Trainer;
 
 public class IndigoLeague {
 
@@ -63,15 +69,14 @@ public class IndigoLeague {
 			pokeSpecies2 = teams.get(name2).getTypeName();
 			break;
 		}
-		
-		//Add attacks to the pool
+
+		// Add attacks to the pool
 		if (teams.get(name1).getTypeName() == "Bulbasaur") {
 		} else if (teams.get(name1).getTypeName() == "Charmander") {
 
 		} else if (teams.get(name1).getTypeName() == "Squirtle") {
 
 		}
-
 
 		// Gameplay
 		System.out.println("Welcome to the Indigo League!\r\nToday's competitors are " + player1.getName() + " and "
@@ -82,15 +87,25 @@ public class IndigoLeague {
 
 		System.out.println(player2.getName() + ": " + "Go, " + teams.get(name2).getName() + "!");
 		System.out.println(player2.getName() + " chooses " + pokeSpecies2 + "!\r\n");
-
-		System.out.println(teams.get(name1).getName() + "'s HP: " + (int) teams.get(name1).getHealthPoints() + "\t"
-				+ teams.get(name2).getName() + "'s HP: " + (int) teams.get(name2).getHealthPoints());
-
-		// Action choice
-		String choiceAction = chooseActionPrompt();
-		int choiceActionInt = Integer.parseInt(choiceAction);
-		player1.chooseAction(choiceActionInt, teams.get(name1), teams.get(name2));
+			
+		System.out.println(teams.get(name1).getDefensePower());
 		
+		boolean isLoop = true;
+		while (isLoop == true) {
+			// Player's turn
+			teams.get(name1).setAttackPower(teams.get(name1).getAttAux());
+			teams.get(name1).setDefensePower(teams.get(name1).getDefAux());
+			System.out.println(teams.get(name1).getDefensePower());
+
+			System.out.println(teams.get(name1).getName() + "'s HP: " + (int) teams.get(name1).getHealthPoints() + "\t"
+					+ teams.get(name2).getName() + "'s HP: " + (int) teams.get(name2).getHealthPoints());
+			// Action choice
+			String choiceAction = chooseActionPrompt();
+			int choiceActionInt = Integer.parseInt(choiceAction);
+			player1.chooseAction(choiceActionInt, teams.get(name1), teams.get(name2));
+
+			// CPU's turn
+		}
 	}
 
 }

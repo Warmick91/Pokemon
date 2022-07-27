@@ -4,6 +4,10 @@ import pokemon.Pokemon;
 
 public class Tackle extends AttackTechniques {	
 	
+	public Tackle(){
+		attackName = "Tackle";
+	}
+	
 	public double useSkill(Pokemon pok1, Pokemon pok2) {
 		//this.attType = attType;
 	
@@ -30,6 +34,14 @@ public class Tackle extends AttackTechniques {
 					System.out.println("A direct hit!");
 					return dmgValue;
 				}
+	}
+
+	public String getAttackName() {
+		return attackName;
+	}
+
+	public void setAttackName(String attackName) {
+		this.attackName = attackName;
 	}
 	
 }

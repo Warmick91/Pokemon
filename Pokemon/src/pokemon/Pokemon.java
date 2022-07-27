@@ -1,31 +1,37 @@
 package pokemon;
 
 import attacks.AttackTechniques;
-import attacks.Tackle;
 
 public abstract class Pokemon {
-	
+
 	protected String typeName;
 	protected String name;
 	protected String type;
 	protected String subtype;
 	protected double level; // 1.0 - 100.0
-	protected double attackPower; // 0.0-100.0
-	protected double defensePower; // 0.0 -100.0
+	protected double attackPower; // 0.0 - 100.0
+	protected double defensePower; // 0.0 - 100.0
 	protected double speed; // 0.0 - 1.0
 	protected double healthPoints; // 0.0 - x
-	protected double luck; //0.0-1.0
-	
-	// Getters and setters
+	protected double luck; // 0.0-1.0
 
+	private double attAux;
+	private double defAux;
+
+	Pokemon() {
+		this.attAux = this.attackPower;
+		this.defensePower = this.defAux;
+	}
+
+	// Getters and setters
 	public String getTypeName() {
 		return this.typeName;
 	}
-	
+
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -54,7 +60,7 @@ public abstract class Pokemon {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(double level) {
 		this.level = level;
 	}
 
@@ -97,10 +103,26 @@ public abstract class Pokemon {
 	public void setLuck(double luck) {
 		this.luck = luck;
 	}
-	
-	//Attacks pool	
+
+	public double getAttAux() {
+		return attAux;
+	}
+
+	public void setAttAux(double attAux) {
+		this.attAux = attAux;
+	}
+
+	public double getDefAux() {
+		return defAux;
+	}
+
+	public void setDefAux(double defAux) {
+		this.defAux = defAux;
+	}
+
+	// Attacks pool
 	AttackTechniques[] attacktechniques = new AttackTechniques[4];
-	
+
 	// Attack
 	public abstract int attack();
 

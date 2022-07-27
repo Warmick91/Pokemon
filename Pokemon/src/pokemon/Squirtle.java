@@ -3,7 +3,7 @@ package pokemon;
 public class Squirtle extends Pokemon {
 		
 	
-	Squirtle(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck) {
+	public Squirtle(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck) {
 		this.typeName = "Squirtle";
 		this.name = name;
 		this.type = "water";
