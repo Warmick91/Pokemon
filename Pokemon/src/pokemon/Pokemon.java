@@ -11,9 +11,10 @@ public abstract class Pokemon {
 	protected double level; // 1.0 - 100.0
 	protected double attackPower; // 0.0 - 100.0
 	protected double defensePower; // 0.0 - 100.0
-	protected double speed; // 0.0 - 1.0
+	protected double speed; // 0.0 - 100.0
 	protected double healthPoints; // 0.0 - x
-	protected double luck; // 0.0-1.0
+	protected double luck; // 0.0 - 100.0
+	protected double critPower; // 0.0 - 100;
 
 	protected double attAux;
 	protected double defAux;
@@ -113,6 +114,14 @@ public abstract class Pokemon {
 
 	public void setDefAux(double defAux) {
 		this.defAux = defAux;
+	}
+
+	public double getCritPower() {
+		return critPower;
+	}
+
+	public void setCritPower(double critPower) {
+		this.critPower = critPower;
 	}
 
 	// Attacks pool

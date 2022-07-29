@@ -22,9 +22,9 @@ public class IndigoLeague {
 
 	public static void main(String[] args) {
 
-		Bulbasaur Petalboy = new Bulbasaur("Petalboy", 8, "poison", 60, 30, 0.1, 75, 0.1);
-		Charmander Emberlass = new Charmander("Emberlass", 8, null, 50, 50, 0.15, 65, 0.1);
-		Squirtle Splashdude = new Squirtle("Splashdude", 8, null, 45, 55, 0.13, 80, 0.1);
+		Bulbasaur Petalboy = new Bulbasaur("Petalboy", 8, "poison", 60, 30, 10, 75, 10, 5);
+		Charmander Emberlass = new Charmander("Emberlass", 8, null, 50, 50, 15, 65, 10, 5);
+		Squirtle Splashdude = new Squirtle("Splashdude", 8, null, 45, 55, 13, 80, 10, 5);
 		String name1 = JOptionPane.showInputDialog("Prof. Oak: What's your name? I'm old and forgetful these days.");
 		String name2 = JOptionPane.showInputDialog("Prof. Oak: Ah, awesome. Who's your rival?");
 		Trainer player1 = new Trainer(name1, 3, 6);
@@ -87,15 +87,16 @@ public class IndigoLeague {
 
 		System.out.println(player2.getName() + ": " + "Go, " + teams.get(name2).getName() + "!");
 		System.out.println(player2.getName() + " chooses " + pokeSpecies2 + "!\r\n");
-			
-		System.out.println(teams.get(name1).getDefensePower());
-		
+
 		boolean isLoop = true;
 		while (isLoop == true) {
 			// Player's turn
 			teams.get(name1).setAttackPower(teams.get(name1).getAttAux());
+			System.out.println(teams.get(name1).getName() + "'s AP: " + teams.get(name1).getAttackPower()); // test to
+																											// delete
 			teams.get(name1).setDefensePower(teams.get(name1).getDefAux());
-			System.out.println(teams.get(name1).getDefensePower());
+			System.out.println(teams.get(name1).getName() + "'s DP: " + teams.get(name1).getDefensePower()); // test to
+																												// delete
 
 			System.out.println(teams.get(name1).getName() + "'s HP: " + (int) teams.get(name1).getHealthPoints() + "\t"
 					+ teams.get(name2).getName() + "'s HP: " + (int) teams.get(name2).getHealthPoints());

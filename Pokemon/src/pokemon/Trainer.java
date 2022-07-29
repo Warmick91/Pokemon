@@ -6,8 +6,7 @@ public class Trainer {
 	private String name;
 	private int potions;
 	private int pokeballs;
-	
-	
+
 	public Trainer(String name, int potions, int pokeballs) {
 		this.name = name;
 		this.potions = potions;
@@ -52,8 +51,8 @@ public class Trainer {
 	}
 
 	public void orderDefense(Pokemon x) {
-		x.setDefAux(x.getDefensePower()); 
-		x.setDefensePower(x.getDefensePower()+x.getDefensePower()*0.05);
+		x.setDefAux(x.getDefensePower());
+		x.setDefensePower(x.getDefensePower() + x.getDefensePower() * 0.05);
 		System.out.println(x.getDefensePower());
 	}
 
@@ -66,7 +65,7 @@ public class Trainer {
 	}
 
 	public void chooseAction(int x, Pokemon pok1, Pokemon pok2) {
-		
+
 		switch (x) {
 		case 1:
 			orderAttack(pok1, pok2);

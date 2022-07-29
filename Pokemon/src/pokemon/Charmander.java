@@ -2,7 +2,7 @@ package pokemon;
 
 public class Charmander extends Pokemon {
 	
-	public Charmander(String name, int lvl, String sub, double attPow, double defPow, double speed, double hp, double luck) {
+	public Charmander(String name, int lvl, String sub, double attPow, double defPow, double speed, double hp, double luck, double critPower) {
 		this.typeName = "Charmander";
 		this.name = name;
 		this.type = "fire";
@@ -13,6 +13,7 @@ public class Charmander extends Pokemon {
 		this.speed = speed;
 		this.healthPoints = hp;
 		this.luck = luck;
+		this.critPower = critPower;
 	}
 
 	@Override

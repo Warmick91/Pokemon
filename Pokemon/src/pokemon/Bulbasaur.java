@@ -4,7 +4,8 @@ import attacks.Tackle;
 
 public class Bulbasaur extends Pokemon {
 
-	public Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck) {
+	public Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck, double critPower) {
+		this.attAux = attPow;
 		this.defAux = defPow;
 		this.typeName = "Bulbasaur";
 		this.name = name;
@@ -16,6 +17,7 @@ public class Bulbasaur extends Pokemon {
 		this.speed = speed;
 		this.healthPoints = hp;
 		this.luck = luck;
+		this.critPower = critPower;
 		
 		//Attacks pool
 		this.attacktechniques[0] = new Tackle();
