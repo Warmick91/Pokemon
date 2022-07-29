@@ -7,18 +7,23 @@ import pokemon.Pokemon;
 public class Tackle extends AttackTechniques {
 
 	public Tackle() {
-		attackName = "Tackle";
+		attackName = "tackle";
+		attackType = "normal";
 	}
 
 	public double useSkill(Pokemon pok1, Pokemon pok2) {
-		// this.attType = attType;
+
+		// Attack's chance
+		double attackChance = (this.baseAttackChance + (pok1.getSpeed() + pok1.getLuck() * 0.5));
+		if ((rand.nextInt(100) + 1) >= attackChance) {
+			System.out.println("The attack missed!");
+			return 0;
+		}
 
 		// Critical calculation
-		pok1.setAttAux(pok1.getAttackPower());
 		boolean isCritical = false;
-		double critChance = ((pok1.getLuck() * pok1.getAttackPower() * 0.01) - (pok2.getLuck() * 0.1)); // move to Pokemon
-		double critAvoidChance = (pok2.getLuck() * pok2.getLevel() * 0.1);
-		Random rand = new Random();
+		double critChance = ((pok1.getLuck() * pok1.getAttackPower() * 0.01) - (pok2.getLuck() * 0.1)); // move to
+																										// Pokemon
 		if (rand.nextInt(100) + 1 <= critChance) {
 			isCritical = true;
 		}
@@ -30,28 +35,15 @@ public class Tackle extends AttackTechniques {
 
 		// Attack's process
 		double dmgValue = (pok1.getAttackPower() - pok2.getDefensePower());
-		double avoidChance = (pok2.getSpeed() + pok2.getLuck());
-		double attackChance = (pok1.getSpeed() + pok1.getLuck());
 
 		// Effect
-		if (avoidChance > attackChance) {
-			System.out.println("No hit!");
-			return 0.0;
-		} else if (avoidChance == attackChance) {
+		if (rand.nextInt(100) + 1 <= baseGrazeChance) {
 			System.out.println("Grazed!");
 			return dmgValue * 0.1;
 		} else {
 			System.out.println("A direct hit!");
 			return dmgValue;
 		}
-	}
-
-	public String getAttackName() {
-		return attackName;
-	}
-
-	public void setAttackName(String attackName) {
-		this.attackName = attackName;
 	}
 
 }

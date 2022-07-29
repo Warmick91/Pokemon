@@ -1,12 +1,18 @@
 package attacks;
 
+import java.util.Random;
+
 import pokemon.Pokemon;
 
 public abstract class AttackTechniques {
 
 	protected String attackName = "";
 	protected String attackType = "";
-
+	protected double baseAttackChance = 75.0;
+	protected double baseGrazeChance = 7.5;
+	
+	Random rand = new Random();
+	
 	public double useSkill(Pokemon x, Pokemon y) {
 		return 0;
 	};
@@ -45,5 +51,21 @@ public abstract class AttackTechniques {
 
 	public void setAttType(String attType) {
 		this.attackType = attType;
+	}
+
+	public double getBaseAttackChance() {
+		return baseAttackChance;
+	}
+
+	public void setBaseAttackChance(double baseAttackChance) {
+		this.baseAttackChance = baseAttackChance;
+	}
+
+	public double getBaseGrazeChance() {
+		return baseGrazeChance;
+	}
+
+	public void setBaseGrazeChance(double baseGrazeChance) {
+		this.baseGrazeChance = baseGrazeChance;
 	}
 }
