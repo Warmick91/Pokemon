@@ -7,11 +7,11 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 
+import Trainers.PlayerTrainer;
 import pokemon.Bulbasaur;
 import pokemon.Charmander;
 import pokemon.Pokemon;
 import pokemon.Squirtle;
-import pokemon.Trainer;
 
 public class IndigoLeague {
 
@@ -28,8 +28,8 @@ public class IndigoLeague {
 		Squirtle Splashdude = new Squirtle("Splashdude", 8, null, 45, 55, 13, 80, 10, 5);
 		String name1 = JOptionPane.showInputDialog("Prof. Oak: What's your name? I'm old and forgetful these days.");
 		String name2 = JOptionPane.showInputDialog("Prof. Oak: Ah, awesome. Who's your rival?");
-		Trainer player1 = new Trainer(name1, 2, 1, 3);
-		Trainer player2 = new Trainer(name2, 2, 1, 3);
+		PlayerTrainer player1 = new PlayerTrainer(name1, 2, 1, 3);
+		PlayerTrainer player2 = new PlayerTrainer(name2, 2, 1, 3);
 
 		// The list of available Pokemon
 		ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>();
@@ -140,7 +140,7 @@ public class IndigoLeague {
 			}
 
 			// Action choice
-			String choiceAction = Trainer.chooseActionPrompt();
+			String choiceAction = PlayerTrainer.chooseActionPrompt();
 			int choiceActionInt = Integer.parseInt(choiceAction);
 			player1.chooseAction(choiceActionInt, teams.get(name1), teams.get(name2));
 

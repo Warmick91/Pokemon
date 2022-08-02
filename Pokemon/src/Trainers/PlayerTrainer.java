@@ -1,11 +1,12 @@
-package pokemon;
+package Trainers;
 
 import javax.swing.JOptionPane;
 
+import pokemon.Pokemon;
 import potions.RegularPotion;
 import potions.SuperPotion;
 
-public class Trainer {
+public class PlayerTrainer {
 	private String name;
 	private int regPotions;
 	private int supPotions;
@@ -13,7 +14,7 @@ public class Trainer {
 	RegularPotion regularPotion = new RegularPotion();
 	SuperPotion superPotion = new SuperPotion();
 
-	public Trainer(String name, int regPotions, int supPotions, int pokeballs) {
+	public PlayerTrainer(String name, int regPotions, int supPotions, int pokeballs) {
 		this.name = name;
 		this.pokeballs = pokeballs;
 		this.regPotions = regPotions;
@@ -60,10 +61,29 @@ public class Trainer {
 		this.pokeballs = pokeballs;
 	}
 
+	// Execute attack method
+	boolean stopLoop;
+	double dmgDone;
+
+	public void executeAttack(Pokemon x, Pokemon y, int arraySlot) {
+		if (x.attacktechniques[arraySlot-1].getAttackName() == "---") {
+			JOptionPane.showMessageDialog(null, "No move has been allotted here!");
+		} else if (x.attacktechniques[arraySlot-1].getAttackClass() == "DmgDealer") {
+			System.out.println(x.getName() + " uses " + x.attacktechniques[arraySlot-1].getAttackName() + "!");
+			dmgDone = x.attacktechniques[arraySlot-1].useSkill(x, y);
+			y.setHealthPoints(y.getHealthPoints() - dmgDone);
+			System.out.println(x.getName() + " deals " + dmgDone + " points of damage!");
+			stopLoop = true;
+		} else {
+			System.out.println(x.getName() + " uses " + x.attacktechniques[arraySlot-1].getAttackName() + "!");
+			x.attacktechniques[arraySlot-1].useSkill(x, y);
+			stopLoop = true;
+		}
+	}
+
 	// Actions
 	public void orderAttack(Pokemon x, Pokemon y) {
-		double dmgDone;
-		boolean stopLoop = false;
+		stopLoop = false;
 		while (stopLoop == false) {
 			String attackTypeChoice = JOptionPane
 					.showInputDialog("Attacks:\r\n1) " + x.attacktechniques[0].getAttackName() + "\r\n2) "
@@ -72,38 +92,16 @@ public class Trainer {
 			int attackTypeInt = Integer.parseInt(attackTypeChoice);
 			switch (attackTypeInt) {
 			case 1:
-				dmgDone = x.attacktechniques[0].useSkill(x, y);
-				y.setHealthPoints(y.getHealthPoints() - dmgDone);
-				System.out.println(x.getName() + " deals " + dmgDone + " points of damage!");
-				stopLoop = true;
+				executeAttack(x, y, attackTypeInt);
 				break;
 			case 2:
-				dmgDone = x.attacktechniques[1].useSkill(x, y);
-				y.setHealthPoints(y.getHealthPoints() - dmgDone);
-				System.out.println(x.getName() + " deals " + dmgDone + " points of damage!");
-				stopLoop = true;
+				executeAttack(x, y, attackTypeInt);
 				break;
 			case 3:
-				if (x.attacktechniques[2].getAttackName() == "---") {
-					JOptionPane.showMessageDialog(null, "No move has been allotted here!");
-				} else {
-					dmgDone = x.attacktechniques[2].useSkill(x, y);
-					y.setHealthPoints(y.getHealthPoints() - dmgDone);
-					System.out.println(x.getName() + " deals " + dmgDone + " points of damage!");
-					stopLoop = true;
-
-				}
+				executeAttack(x, y, attackTypeInt);
 				break;
 			case 4:
-				if (x.attacktechniques[3].getAttackName() == "---") {
-					JOptionPane.showMessageDialog(null, "No move has been allotted here!");
-				} else {
-					dmgDone = x.attacktechniques[3].useSkill(x, y);
-					y.setHealthPoints(y.getHealthPoints() - dmgDone);
-					System.out.println(x.getName() + " deals " + dmgDone + " points of damage!");
-					stopLoop = true;
-
-				}
+				executeAttack(x, y, attackTypeInt);
 				break;
 			}
 		}

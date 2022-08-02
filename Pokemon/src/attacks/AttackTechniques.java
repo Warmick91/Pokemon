@@ -8,6 +8,7 @@ public abstract class AttackTechniques {
 
 	protected String attackName = "";
 	protected String attackType = "";
+	protected String attackClass = "";
 	protected double defGrazeChance = 20;
 	protected double defCritChance = 20;
 	
@@ -51,6 +52,18 @@ public abstract class AttackTechniques {
 
 	public void setAttType(String attType) {
 		this.attackType = attType;
+	}
+
+	public String getAttackClass() {
+		return attackClass;
+	}
+
+	public void setAttackClass(String attackClass) {
+		this.attackClass = attackClass;
+	}
+
+	public void setAttackType(String attackType) {
+		this.attackType = attackType;
 	}
 
 	public double getDefGrazeChance() {

@@ -9,6 +9,7 @@ public class Tackle extends AttackTechniques {
 	public Tackle() {
 		attackName = "Tackle";
 		attackType = "normal";
+		attackType = "DmgDealer";
 	}
 
 	public double useSkill(Pokemon pok1, Pokemon pok2) {

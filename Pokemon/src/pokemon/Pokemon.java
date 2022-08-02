@@ -224,6 +224,6 @@ public abstract class Pokemon {
 	}
 
 	// Attacks pool
-	AttackTechniques[] attacktechniques = new AttackTechniques[4];
+	public AttackTechniques[] attacktechniques = new AttackTechniques[4];
 
 }
