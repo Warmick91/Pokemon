@@ -15,10 +15,21 @@ public abstract class Pokemon {
 	protected double healthPoints; // 0.0 - x
 	protected double luck; // 0.0 - 100.0
 	protected double critPower; // 0.0 - 100;
-
+	
 	protected double attAux;
 	protected double defAux;
-
+	protected double speedAux;
+	protected double maxHealthPoints;
+	protected double healthPointsAux;
+	protected double luckAux;
+	protected double critAux;
+	protected int attackTurnsOfEffect = 0;
+	protected int defenseTurnsOfEffect = 0;
+	protected int speedTurnsOfEffect = 0;
+	protected int healthTurnsOfEffect = 0;
+	protected int luckTurnsOfEffect = 0;
+	protected int criticalTurnsOfEffect = 0;
+	
 	// Getters and setters
 	public String getTypeName() {
 		return this.typeName;
@@ -84,6 +95,22 @@ public abstract class Pokemon {
 		this.speed = speed;
 	}
 
+	public double getMaxHealthPoints() {
+		return maxHealthPoints;
+	}
+
+	public void setMaxHealthPoints(double maxHealthPoints) {
+		this.maxHealthPoints = maxHealthPoints;
+	}
+
+	public double getHealthPointsAux() {
+		return healthPointsAux;
+	}
+
+	public void setHealthPointsAux(double healthPointsAux) {
+		this.healthPointsAux = healthPointsAux;
+	}
+
 	public double getHealthPoints() {
 		return healthPoints;
 	}
@@ -124,11 +151,79 @@ public abstract class Pokemon {
 		this.critPower = critPower;
 	}
 
+	public int getAttackTurnsOfEffect() {
+		return attackTurnsOfEffect;
+	}
+
+	public void setAttackTurnsOfEffect(int attackTurnsOfEffect) {
+		this.attackTurnsOfEffect = attackTurnsOfEffect;
+	}
+
+	public int getDefenseTurnsOfEffect() {
+		return defenseTurnsOfEffect;
+	}
+
+	public void setDefenseTurnsOfEffect(int defenseTurnsOfEffect) {
+		this.defenseTurnsOfEffect = defenseTurnsOfEffect;
+	}
+
+	public int getSpeedTurnsOfEffect() {
+		return speedTurnsOfEffect;
+	}
+
+	public void setSpeedTurnsOfEffect(int speedTurnsOfEffect) {
+		this.speedTurnsOfEffect = speedTurnsOfEffect;
+	}
+
+	public int getHealthTurnsOfEffect() {
+		return healthTurnsOfEffect;
+	}
+
+	public void setHealthTurnsOfEffect(int healthTurnsOfEffect) {
+		this.healthTurnsOfEffect = healthTurnsOfEffect;
+	}
+
+	public int getLuckTurnsOfEffect() {
+		return luckTurnsOfEffect;
+	}
+
+	public void setLuckTurnsOfEffect(int luckTurnsOfEffect) {
+		this.luckTurnsOfEffect = luckTurnsOfEffect;
+	}
+
+	public int getCriticalTurnsOfEffect() {
+		return criticalTurnsOfEffect;
+	}
+
+	public void setCriticalTurnsOfEffect(int criticalTurnsOfEffect) {
+		this.criticalTurnsOfEffect = criticalTurnsOfEffect;
+	}
+
+	public double getSpeedAux() {
+		return speedAux;
+	}
+
+	public void setSpeedAux(double speedAux) {
+		this.speedAux = speedAux;
+	}
+
+	public double getLuckAux() {
+		return luckAux;
+	}
+
+	public void setLuckAux(double luckAux) {
+		this.luckAux = luckAux;
+	}
+
+	public double getCritAux() {
+		return critAux;
+	}
+
+	public void setDefCrit(double critAux) {
+		this.critAux = critAux;
+	}
+
 	// Attacks pool
 	AttackTechniques[] attacktechniques = new AttackTechniques[4];
 
-	// Attack
-	public abstract int attack();
-
-	public abstract int defend();
 }

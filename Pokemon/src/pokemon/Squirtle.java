@@ -4,6 +4,13 @@ public class Squirtle extends Pokemon {
 		
 	
 	public Squirtle(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck, double critPower) {
+		this.attAux = attPow;
+		this.defAux = defPow;
+		this.speedAux = speed;
+		this.maxHealthPoints = hp;
+		this.healthPointsAux = hp;
+		this.luckAux = luck;
+		this.critAux = critPower;
 		this.typeName = "Squirtle";
 		this.name = name;
 		this.type = "water";
@@ -16,17 +23,4 @@ public class Squirtle extends Pokemon {
 		this.luck = luck;
 		this.critPower = critPower;
 	}
-	
-	@Override
-	public int attack() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int defend() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

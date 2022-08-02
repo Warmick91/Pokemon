@@ -8,50 +8,43 @@ public class Tackle extends AttackTechniques {
 
 	public Tackle() {
 		attackName = "Tackle";
+		attackType = "normal";
 	}
 
 	public double useSkill(Pokemon pok1, Pokemon pok2) {
-		// this.attType = attType;
 
-		// Critical calculation
-		pok1.setAttAux(pok1.getAttackPower());
-		boolean isCritical = false;
-		double critChance = ((pok1.getLuck() * pok1.getAttackPower() * 0.01) - (pok2.getLuck() * 0.1)); // move to Pokemon
-		double critAvoidChance = (pok2.getLuck() * pok2.getLevel() * 0.1);
-		Random rand = new Random();
-		if (rand.nextInt(100) + 1 <= critChance) {
-			isCritical = true;
-		}
-		if (isCritical == true) {
-			pok1.setAttackPower(pok1.getAttackPower() + pok1.getAttackPower() * pok1.getCritPower());
-		} else {
-			pok1.setAttackPower(pok1.getAttAux());
-		}
+		// Hit chance
+		double attackChance = ((pok1.getAttackPower() + pok1.getLuck()) / (pok2.getAttackPower() + pok2.getLuck())
+				* 100);
 
-		// Attack's process
-		double dmgValue = (pok1.getAttackPower() - pok2.getDefensePower());
-		double avoidChance = (pok2.getSpeed() + pok2.getLuck());
-		double attackChance = (pok1.getSpeed() + pok1.getLuck());
-
-		// Effect
-		if (avoidChance > attackChance) {
+		if (rand.nextInt(100) + 1 > attackChance) {
 			System.out.println("No hit!");
-			return 0.0;
-		} else if (avoidChance == attackChance) {
+			return 0;
+		}
+
+		// Base damage
+		double dmgValue = (pok1.getAttackPower() - pok2.getDefensePower());
+
+		// Graze chance
+		if (rand.nextInt(100) + 1 <= this.defGrazeChance) {
 			System.out.println("Grazed!");
 			return dmgValue * 0.1;
-		} else {
-			System.out.println("A direct hit!");
-			return dmgValue;
 		}
-	}
 
-	public String getAttackName() {
-		return attackName;
-	}
+		// Critical calculation and final damage
+		pok1.setAttAux(pok1.getAttackPower());
+		boolean isCritical = false;
+		double critChance = ((this.defCritChance + pok1.getLuck() - pok2.getLuck()));
 
-	public void setAttackName(String attackName) {
-		this.attackName = attackName;
-	}
+		if (rand.nextInt(100) + 1 > critChance) {
+			isCritical = false;
+			System.out.println("<Bam!> Direct hit!");
+			return dmgValue; // damage if not critical
+		} else {
+			isCritical = true;
+			System.out.println("<Baaam!> Critical damage!");
+			return dmgValue + (dmgValue * (pok1.getCritPower() / 100)); // damage if critical
+		}
 
+	}
 }
