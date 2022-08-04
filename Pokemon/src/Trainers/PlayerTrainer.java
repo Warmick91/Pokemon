@@ -65,43 +65,40 @@ public class PlayerTrainer {
 	boolean stopLoop;
 	double dmgDone;
 
-	public void executeAttack(Pokemon x, Pokemon y, int arraySlot) {
-		if (x.attacktechniques[arraySlot-1].getAttackName() == "---") {
-			JOptionPane.showMessageDialog(null, "No move has been allotted here!");
-		} else if (x.attacktechniques[arraySlot-1].getAttackClass() == "DmgDealer") {
-			System.out.println(x.getName() + " uses " + x.attacktechniques[arraySlot-1].getAttackName() + "!");
-			dmgDone = x.attacktechniques[arraySlot-1].useSkill(x, y);
+	public void executeAttack(Pokemon x, Pokemon y, int arraySlot) throws InterruptedException {
+		if (x.attacktechniques[arraySlot - 1].getAttackName() == "---") {
+			x.attacktechniques[arraySlot - 1].informSlotEmpty();
+		} else if (x.attacktechniques[arraySlot - 1].getAttackClass() == "DmgDealer") {
+			dmgDone = x.attacktechniques[arraySlot - 1].useSkill(x, y);
 			y.setHealthPoints(y.getHealthPoints() - dmgDone);
-			System.out.println(x.getName() + " deals " + dmgDone + " points of damage!");
 			stopLoop = true;
 		} else {
-			System.out.println(x.getName() + " uses " + x.attacktechniques[arraySlot-1].getAttackName() + "!");
-			x.attacktechniques[arraySlot-1].useSkill(x, y);
+			x.attacktechniques[arraySlot - 1].useSkill(x, y);
 			stopLoop = true;
 		}
 	}
 
 	// Actions
-	public void orderAttack(Pokemon x, Pokemon y) {
+	public void orderAttack(Pokemon pok1, Pokemon pok2) throws InterruptedException {
 		stopLoop = false;
 		while (stopLoop == false) {
-			String attackTypeChoice = JOptionPane
-					.showInputDialog("Attacks:\r\n1) " + x.attacktechniques[0].getAttackName() + "\r\n2) "
-							+ x.attacktechniques[1].getAttackName() + "\r\n3) " + x.attacktechniques[2].getAttackName()
-							+ "\r\n4) " + x.attacktechniques[3].getAttackName());
+			String attackTypeChoice = JOptionPane.showInputDialog("Attacks:\r\n1) "
+					+ pok1.attacktechniques[0].getAttackName() + "\r\n2) " + pok1.attacktechniques[1].getAttackName()
+					+ "\r\n3) " + pok1.attacktechniques[2].getAttackName() + "\r\n4) "
+					+ pok1.attacktechniques[3].getAttackName());
 			int attackTypeInt = Integer.parseInt(attackTypeChoice);
 			switch (attackTypeInt) {
 			case 1:
-				executeAttack(x, y, attackTypeInt);
+				executeAttack(pok1, pok2, attackTypeInt);
 				break;
 			case 2:
-				executeAttack(x, y, attackTypeInt);
+				executeAttack(pok1, pok2, attackTypeInt);
 				break;
 			case 3:
-				executeAttack(x, y, attackTypeInt);
+				executeAttack(pok1, pok2, attackTypeInt);
 				break;
 			case 4:
-				executeAttack(x, y, attackTypeInt);
+				executeAttack(pok1, pok2, attackTypeInt);
 				break;
 			}
 		}
@@ -150,7 +147,7 @@ public class PlayerTrainer {
 
 	}
 
-	public void chooseAction(int x, Pokemon pok1, Pokemon pok2) {
+	public void chooseAction(int x, Pokemon pok1, Pokemon pok2) throws InterruptedException {
 		boolean isActionCorrect = false;
 		while (isActionCorrect == false) {
 			switch (x) {

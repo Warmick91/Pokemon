@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 
+import GUI.Frame;
 import Trainers.PlayerTrainer;
 import pokemon.Bulbasaur;
 import pokemon.Charmander;
@@ -15,17 +16,21 @@ import pokemon.Squirtle;
 
 public class IndigoLeague {
 
-//	public static String chooseActionPrompt() {
-//		String actionChoice = JOptionPane.showInputDialog(
-//				"Choose action:\r\n 1) Attack\r\n 2) Defend\r\n 3) Use potion\r\n 4) Throw a pokeball");
-//		return actionChoice;
-//	}
+	public static void waiting() throws InterruptedException {
+		for (int i = 0; i < 3; i++) {
+			System.out.print(".");
+			TimeUnit.MILLISECONDS.sleep(600);
+		}
+		System.out.println("");
+	}
 
 	public static void main(String[] args) throws InterruptedException {
-
-		Bulbasaur Petalboy = new Bulbasaur("Petalboy", 8, "poison", 60, 30, 10, 75, 2, 5);
-		Charmander Emberlass = new Charmander("Emberlass", 8, null, 50, 50, 15, 65, 2, 5);
-		Squirtle Splashdude = new Squirtle("Splashdude", 8, null, 45, 55, 13, 80, 10, 5);
+		
+		//Frame frame = new Frame();
+		
+		Bulbasaur Petalboy = new Bulbasaur("Petalboy", 8, "poison", 60, 30, 10, 250, 2, 5, 10, 5);
+		Charmander Emberlass = new Charmander("Emberlass", 8, null, 55, 45, 15, 250, 2, 5, 10, 20);
+		Squirtle Splashdude = new Squirtle("Splashdude", 8, null, 55, 50, 13, 250, 10, 5, 10, 5);
 		String name1 = JOptionPane.showInputDialog("Prof. Oak: What's your name? I'm old and forgetful these days.");
 		String name2 = JOptionPane.showInputDialog("Prof. Oak: Ah, awesome. Who's your rival?");
 		PlayerTrainer player1 = new PlayerTrainer(name1, 2, 1, 3);
@@ -93,6 +98,9 @@ public class IndigoLeague {
 		boolean isBattleLooped = true;
 		while (isBattleLooped == true) {
 			// Player's turn
+			if(teams.get(name1).getAnyConditionTurns()!=0) {
+				teams.get(name1).checkIfHasAnyCondition(teams.get(name1));
+			}
 			// Player's AP
 			if (teams.get(name1).getAttackTurnsOfEffect() == 0) {
 				// System.out.println(teams.get(name1).getName() + "'s Attack returns to
@@ -144,20 +152,21 @@ public class IndigoLeague {
 			int choiceActionInt = Integer.parseInt(choiceAction);
 			player1.chooseAction(choiceActionInt, teams.get(name1), teams.get(name2));
 
-			for (int i = 0; i < 3; i++) {
-				System.out.print(".");
-				TimeUnit.MILLISECONDS.sleep(600);
-			}
-			System.out.println("");
+			waiting();
 
 			// CPU's turn
+			System.out.println("CPU's turn - status damage");
+			if(teams.get(name2).getAnyConditionTurns()!=0) {
+				teams.get(name2).checkIfHasAnyCondition(teams.get(name2));
+			}
+			System.out.println("CPU's action");
 			// CPU's AP
 			if (teams.get(name2).getAttackTurnsOfEffect() == 0) {
 				// System.out.println(teams.get(name1).getName() + "'s Attack returns to
 				// normal!");
 				teams.get(name2).setAttackPower(teams.get(name2).getAttAux());
 			} else {
-				//System.out.println(teams.get(name1).getAttackTurnsOfEffect());
+				// System.out.println(teams.get(name1).getAttackTurnsOfEffect());
 				teams.get(name2).setAttackTurnsOfEffect(teams.get(name2).getAttackTurnsOfEffect() - 1);
 			}
 

@@ -1,7 +1,6 @@
-package attacks;
+package attacks.normalAttacks;
 
-import java.util.Random;
-
+import attacks.AttackTechniques;
 import pokemon.Pokemon;
 
 public class Tackle extends AttackTechniques {
@@ -9,17 +8,21 @@ public class Tackle extends AttackTechniques {
 	public Tackle() {
 		attackName = "Tackle";
 		attackType = "normal";
-		attackType = "DmgDealer";
+		attackClass = "DmgDealer";
+		defAccuracy = 80;
 	}
 
-	public double useSkill(Pokemon pok1, Pokemon pok2) {
-
+	public double useSkill(Pokemon pok1, Pokemon pok2) throws InterruptedException {
+		
+		System.out.println(pok1.getName() + " uses " + this.getAttackName() + "!");
+		waiting();
+		
 		// Hit chance
-		double attackChance = ((pok1.getAttackPower() + pok1.getLuck()) / (pok2.getAttackPower() + pok2.getLuck())
-				* 100);
+		double attackChance = calcHitChance(pok1, pok2);
+
 
 		if (rand.nextInt(100) + 1 > attackChance) {
-			System.out.println("No hit!");
+			System.out.println(pok1.getName() + "missed...");
 			return 0;
 		}
 
@@ -29,22 +32,23 @@ public class Tackle extends AttackTechniques {
 		// Graze chance
 		if (rand.nextInt(100) + 1 <= this.defGrazeChance) {
 			System.out.println("Grazed!");
+			System.out.println(pok1.getName() + " deals " + (int)dmgValue + " points of damage!");
 			return dmgValue * 0.1;
 		}
 
 		// Critical calculation and final damage
 		pok1.setAttAux(pok1.getAttackPower());
-		boolean isCritical = false;
 		double critChance = ((this.defCritChance + pok1.getLuck() - pok2.getLuck()));
 
 		if (rand.nextInt(100) + 1 > critChance) {
-			isCritical = false;
 			System.out.println("<Bam!> Direct hit!");
+			System.out.println(pok1.getName() + " deals " + (int)dmgValue + " points of damage!");
 			return dmgValue; // damage if not critical
 		} else {
-			isCritical = true;
 			System.out.println("<Baaam!> Critical damage!");
-			return dmgValue + (dmgValue * (pok1.getCritPower() / 100)); // damage if critical
+			dmgValue = dmgValue + (dmgValue * (pok1.getCritPower() / 100));
+			System.out.println(pok1.getName() + " deals " + (int)dmgValue + " points of damage!");
+			return dmgValue; // damage if critical
 		}
 
 	}

@@ -7,4 +7,5 @@ public class EmptyAttack extends AttackTechniques {
 		this.attackType = "---";
 		this.attackClass = "---";
 	}
+
 }

@@ -1,6 +1,9 @@
 package attacks;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
 
 import pokemon.Pokemon;
 
@@ -9,31 +12,45 @@ public abstract class AttackTechniques {
 	protected String attackName = "";
 	protected String attackType = "";
 	protected String attackClass = "";
+	protected double defAccuracy;
 	protected double defGrazeChance = 20;
 	protected double defCritChance = 20;
-	
+
+	protected double conditionChance;
+	protected boolean causesCondition = false;
+
 	protected Random rand = new Random();
 	
-	public double useSkill(Pokemon x, Pokemon y) {
-		return 0;
-	};
 
-	// public double scratch() {
-//		this.attType = "normal";
-//	}
-//
-//	public double growl() {
-//		this.attType = "normal";
-//	}
-//
-//	public double vineWhip() {
-//		this.attType = "grass";
-//	}
-//
-//	public double ember() {
-//		this.attType = "fire";
-//	}
-//
+	public double useSkill(Pokemon x, Pokemon y) throws InterruptedException {
+		return 0;
+	}
+	
+	protected double calcHitChance(Pokemon pok1, Pokemon pok2) {
+		return (defAccuracy + pok1.getLuck()) - ((pok2.getLuck() / 100) * pok2.getSpeed());
+	}
+	
+	public void informSlotEmpty() {
+		JOptionPane.showMessageDialog(null, "No move has been allotted here!");
+	}
+
+	// check for condition
+	public boolean checkConditionChance(Pokemon pok1, Pokemon pok2) {
+		if (pok1.getSpecAttPower() > pok2.getSpecDefPower()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static void waiting() throws InterruptedException {
+		for (int i = 0; i < 3; i++) {
+			System.out.print(".");
+			TimeUnit.MILLISECONDS.sleep(300);
+		}
+		System.out.println("");
+	}
+
 //	public double waterGun() {
 //		this.attType = "water";
 //	}	

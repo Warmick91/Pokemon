@@ -1,5 +1,6 @@
-package attacks;
+package attacks.grassAttacks;
 
+import attacks.AttackTechniques;
 import pokemon.Pokemon;
 
 public class VineWhip extends AttackTechniques {
@@ -8,13 +9,16 @@ public class VineWhip extends AttackTechniques {
 		attackName = "Vine Whip";
 		attackType = "grass";
 		attackClass = "DmgDealer";
+		defAccuracy = 60;
 	}
 
-	public double useSkill(Pokemon pok1, Pokemon pok2) {
+	public double useSkill(Pokemon pok1, Pokemon pok2) throws InterruptedException {
+
+		System.out.println(pok1.getName() + " uses " + this.getAttackName() + "!");
+		waiting();
 
 		// Hit chance
-		double attackChance = ((pok1.getAttackPower() + pok1.getLuck()) / (pok2.getAttackPower() + pok2.getLuck())
-				* 100);
+		double attackChance = calcHitChance(pok1, pok2);
 
 		if (rand.nextInt(100) + 1 > attackChance) {
 			System.out.println("No hit!");
@@ -37,13 +41,25 @@ public class VineWhip extends AttackTechniques {
 			dmgValue = pok1.getAttackPower() - pok2.getDefensePower(); // RegularAgainst
 		}
 
+		// Graze chance
+		if (rand.nextInt(100) + 1 <= defGrazeChance) {
+			System.out.println("Grazed!");
+			dmgValue = dmgValue * 0.1;
+
+			if (dmgValue > 0) {
+				System.out.println(pok1.getName() + " deals " + (int)dmgValue + " points of damage!");
+				return dmgValue;
+			} else {
+				System.out.println(pok1.getName() + " deals pratically no points of damage!");
+				return 0.1;
+			}
+		}
+
 		// Critical calculation and final damage
 		pok1.setAttAux(pok1.getAttackPower());
-		boolean isCritical = false;
-		double critChance = ((this.defCritChance + pok1.getLuck() - pok2.getLuck()));
+		double critChance = ((defCritChance + pok1.getLuck() - pok2.getLuck()));
 
 		if (rand.nextInt(100) + 1 > critChance) {
-			isCritical = false;
 			switch (effective) {
 			case 0:
 				System.out.println("The attack's not very effective...");
@@ -53,16 +69,25 @@ public class VineWhip extends AttackTechniques {
 				break;
 			case 2:
 				System.out.println("The attack's super effective!");
+				break;
 			}
 			if (dmgValue > 0) {
-				return dmgValue;
+				System.out.println(pok1.getName() + " deals " + (int)dmgValue + " points of damage!");
+				return dmgValue; // damage if not critical
 			} else {
+				System.out.println(pok1.getName() + " deals pratically damage...");
 				return 0.1;
 			} // damage if not critical
 		} else {
-			isCritical = true;
 			System.out.println("Critical damage!");
-			return dmgValue + (dmgValue * (pok1.getCritPower() / 100)); // damage if critical
+			dmgValue = dmgValue + (dmgValue * (pok1.getCritPower() / 100));
+			if (dmgValue > 0) {
+				System.out.println(pok1.getName() + " deals " + (int)dmgValue + " points of damage!");
+				return dmgValue; // damage if critical
+			} else {
+				System.out.println(pok1.getName() + " deals pratically no damage...");
+				return 0.1;
+			}
 		}
 	}
 }

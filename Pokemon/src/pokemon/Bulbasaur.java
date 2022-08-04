@@ -1,13 +1,14 @@
 package pokemon;
 
 import attacks.EmptyAttack;
-import attacks.Growl;
-import attacks.Tackle;
-import attacks.VineWhip;
+import attacks.grassAttacks.VineWhip;
+import attacks.normalAttacks.Growl;
+import attacks.normalAttacks.Tackle;
 
 public class Bulbasaur extends Pokemon {
 
-	public Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck, double critPower) {
+	public Bulbasaur(String name, int lvl, String sub, double attPow, double defPow, double speed, int hp, double luck,
+			double critPower, double specAttPow, double specDefPow) {
 		this.attAux = attPow;
 		this.defAux = defPow;
 		this.speedAux = speed;
@@ -26,12 +27,14 @@ public class Bulbasaur extends Pokemon {
 		this.healthPoints = hp;
 		this.luck = luck;
 		this.critPower = critPower;
-		
-		//Attacks pool
+		this.specAttPower = specAttPow;
+		this.specDefPower = specDefPow;
+
+		// Attacks pool
 		this.attacktechniques[0] = new Tackle();
 		this.attacktechniques[1] = new VineWhip();
 		this.attacktechniques[2] = new Growl();
 		this.attacktechniques[3] = new EmptyAttack();
-	}	
-	
+	}
+
 }

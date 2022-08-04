@@ -1,7 +1,6 @@
-package attacks;
+package attacks.normalAttacks;
 
-import java.util.concurrent.TimeUnit;
-
+import attacks.AttackTechniques;
 import pokemon.Pokemon;
 
 public class Growl extends AttackTechniques {
@@ -12,19 +11,11 @@ public class Growl extends AttackTechniques {
 		attackClass = "EnemyStatsChanger";
 	}
 	
-	public double useSkill(Pokemon pok1, Pokemon pok2) {
+	public double useSkill(Pokemon pok1, Pokemon pok2) throws InterruptedException {
 		
 		//Final effect
 		System.out.println(pok1.getName() + " growls!");
-		for (int i = 0; i < 3; i++) {
-			System.out.print(".");
-			try {
-				TimeUnit.MILLISECONDS.sleep(600);
-			} catch (InterruptedException e) {				
-				e.printStackTrace();
-			}
-		}
-		System.out.println("");
+		waiting();
 		
 		System.out.println(pok2.getName() + "'s Attack drops!");
 		pok2.setAttackPower(pok2.getAttackPower()*0.8);
