@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 import GUI.Frame;
+import GUI.GUIActionWindow;
+import Trainers.CPUTrainer;
 import Trainers.PlayerTrainer;
 import pokemon.Bulbasaur;
 import pokemon.Charmander;
@@ -25,16 +27,20 @@ public class IndigoLeague {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
+
 		
-		//Frame frame = new Frame();
+		//GUI
+		GUIActionWindow GUI = new GUIActionWindow();
 		
+		// Frame frame = new Frame();
+
 		Bulbasaur Petalboy = new Bulbasaur("Petalboy", 8, "poison", 60, 30, 10, 250, 2, 5, 10, 5);
 		Charmander Emberlass = new Charmander("Emberlass", 8, null, 55, 45, 15, 250, 2, 5, 10, 20);
 		Squirtle Splashdude = new Squirtle("Splashdude", 8, null, 55, 50, 13, 250, 10, 5, 10, 5);
 		String name1 = JOptionPane.showInputDialog("Prof. Oak: What's your name? I'm old and forgetful these days.");
 		String name2 = JOptionPane.showInputDialog("Prof. Oak: Ah, awesome. Who's your rival?");
-		PlayerTrainer player1 = new PlayerTrainer(name1, 2, 1, 3);
-		PlayerTrainer player2 = new PlayerTrainer(name2, 2, 1, 3);
+		PlayerTrainer player = new PlayerTrainer(name1, 2, 1, 3);
+		CPUTrainer cpu = new CPUTrainer(name2, 2, 1, 3);
 
 		// The list of available Pokemon
 		ArrayList<Pokemon> pokedex = new ArrayList<Pokemon>();
@@ -76,130 +82,40 @@ public class IndigoLeague {
 			break;
 		}
 
-		// Add attacks to the pool
-		if (teams.get(name1).getTypeName() == "Bulbasaur") {
-		} else if (teams.get(name1).getTypeName() == "Charmander") {
+		// Giving normal names to team Pokemon
+		Pokemon playerPokemon = teams.get(name1);
+		Pokemon cpuPokemon = teams.get(name2);
 
-		} else if (teams.get(name1).getTypeName() == "Squirtle") {
+		// Add attacks to the pool
+		if (playerPokemon.getTypeName() == "Bulbasaur") {
+		} else if (playerPokemon.getTypeName() == "Charmander") {
+
+		} else if (playerPokemon.getTypeName() == "Squirtle") {
 
 		}
 
 		// Gameplay
-		System.out.println("Welcome to the Indigo League!\r\nToday's competitors are " + player1.getName() + " and "
-				+ player2.getName() + "!\r\n");
+		System.out.println("Welcome to the Indigo League!\r\nToday's competitors are " + player.getName() + " and "
+				+ cpu.getName() + "!\r\n");
 
-		System.out.println(player1.getName() + ": " + teams.get(name1).getName() + ", go!");
-		System.out.println(player1.getName() + " chooses " + pokeSpecies1 + "!\r\n");
+		System.out.println(player.getName() + ": " + playerPokemon.getName() + ", go!");
+		System.out.println(player.getName() + " chooses " + pokeSpecies1 + "!\r\n");
 
-		System.out.println(player2.getName() + ": " + "Go, " + teams.get(name2).getName() + "!");
-		System.out.println(player2.getName() + " chooses " + pokeSpecies2 + "!\r\n");
+		System.out.println(cpu.getName() + ": " + "Go, " + cpuPokemon.getName() + "!");
+		System.out.println(cpu.getName() + " chooses " + pokeSpecies2 + "!\r\n");
 
 		// boolean isFirstRound = true;
 		boolean isBattleLooped = true;
 		while (isBattleLooped == true) {
+			
 			// Player's turn
-			if(teams.get(name1).getAnyConditionTurns()!=0) {
-				teams.get(name1).checkIfHasAnyCondition(teams.get(name1));
-			}
-			// Player's AP
-			if (teams.get(name1).getAttackTurnsOfEffect() == 0) {
-				// System.out.println(teams.get(name1).getName() + "'s Attack returns to
-				// normal!");
-				teams.get(name1).setAttackPower(teams.get(name1).getAttAux());
-			} else {
-				System.out.println(teams.get(name1).getAttackTurnsOfEffect());
-				teams.get(name1).setAttackTurnsOfEffect(teams.get(name1).getAttackTurnsOfEffect() - 1);
-			}
-			System.out.print(teams.get(name1).getName() + "'s AP: " + teams.get(name1).getAttackPower() + "\t");
-			System.out.println(teams.get(name2).getName() + "'s AP: " + teams.get(name2).getAttackPower()); // test to
-																											// delete
-			// Player's DP
-			if (teams.get(name1).getDefenseTurnsOfEffect() == 0) {
-				teams.get(name1).setDefensePower(teams.get(name1).getDefAux());
-			} else {
-				teams.get(name1).setDefenseTurnsOfEffect(teams.get(name1).getDefenseTurnsOfEffect() - 1);
-			}
-			System.out.print(teams.get(name1).getName() + "'s DP: " + teams.get(name1).getDefensePower() + "\t");
-			System.out.println(teams.get(name2).getName() + "'s DP: " + teams.get(name2).getDefensePower()); // test to
-																												// delete
-			// Player's HP
-			System.out.println(teams.get(name1).getName() + "'s HP: " + (int) teams.get(name1).getHealthPoints() + "\t"
-					+ teams.get(name2).getName() + "'s HP: " + (int) teams.get(name2).getHealthPoints());
-
-			// Player's Speed
-			if (teams.get(name1).getSpeedTurnsOfEffect() == 0) {
-				teams.get(name1).setSpeed(teams.get(name1).getSpeedAux());
-			} else {
-				teams.get(name1).setSpeedTurnsOfEffect(teams.get(name1).getSpeedTurnsOfEffect() - 1);
-			}
-
-			// Player's Luck
-			if (teams.get(name1).getLuckTurnsOfEffect() == 0) {
-				teams.get(name1).setLuck(teams.get(name1).getLuckAux());
-			} else {
-				teams.get(name1).setLuckTurnsOfEffect(teams.get(name1).getLuckTurnsOfEffect() - 1);
-			}
-
-			// Player's Critical Power
-			if (teams.get(name1).getCriticalTurnsOfEffect() == 0) {
-				teams.get(name1).setCritPower(teams.get(name1).getCritAux());
-			} else {
-				teams.get(name1).setCriticalTurnsOfEffect(teams.get(name1).getCriticalTurnsOfEffect() - 1);
-			}
-
-			// Action choice
-			String choiceAction = PlayerTrainer.chooseActionPrompt();
-			int choiceActionInt = Integer.parseInt(choiceAction);
-			player1.chooseAction(choiceActionInt, teams.get(name1), teams.get(name2));
-
-			waiting();
+			player.trainerAction(playerPokemon, cpuPokemon);
 
 			// CPU's turn
-			System.out.println("CPU's turn - status damage");
-			if(teams.get(name2).getAnyConditionTurns()!=0) {
-				teams.get(name2).checkIfHasAnyCondition(teams.get(name2));
-			}
-			System.out.println("CPU's action");
-			// CPU's AP
-			if (teams.get(name2).getAttackTurnsOfEffect() == 0) {
-				// System.out.println(teams.get(name1).getName() + "'s Attack returns to
-				// normal!");
-				teams.get(name2).setAttackPower(teams.get(name2).getAttAux());
-			} else {
-				// System.out.println(teams.get(name1).getAttackTurnsOfEffect());
-				teams.get(name2).setAttackTurnsOfEffect(teams.get(name2).getAttackTurnsOfEffect() - 1);
-			}
-
-			// CPU's DP
-			if (teams.get(name2).getDefenseTurnsOfEffect() == 0) {
-				teams.get(name2).setDefensePower(teams.get(name2).getDefAux());
-			} else {
-				teams.get(name2).setDefenseTurnsOfEffect(teams.get(name2).getDefenseTurnsOfEffect() - 1);
-			}
-
-			// CPU's Speed
-			if (teams.get(name2).getSpeedTurnsOfEffect() == 0) {
-				teams.get(name2).setSpeed(teams.get(name2).getSpeedAux());
-			} else {
-				teams.get(name2).setSpeedTurnsOfEffect(teams.get(name2).getSpeedTurnsOfEffect() - 1);
-			}
-
-			// CPU's Luck
-			if (teams.get(name2).getLuckTurnsOfEffect() == 0) {
-				teams.get(name2).setLuck(teams.get(name2).getLuckAux());
-			} else {
-				teams.get(name2).setLuckTurnsOfEffect(teams.get(name2).getLuckTurnsOfEffect() - 1);
-			}
-
-			// CPU's Critical Power
-			if (teams.get(name2).getCriticalTurnsOfEffect() == 0) {
-				teams.get(name2).setCritPower(teams.get(name2).getCritAux());
-			} else {
-				teams.get(name2).setCriticalTurnsOfEffect(teams.get(name2).getCriticalTurnsOfEffect() - 1);
-			}
+			cpu.trainerAction(cpuPokemon, playerPokemon);
 
 			// Check HP
-			if (teams.get(name1).getHealthPoints() <= 0 || teams.get(name2).getHealthPoints() <= 0) {
+			if (playerPokemon.getHealthPoints() <= 0 || cpuPokemon.getHealthPoints() <= 0) {
 				isBattleLooped = false;
 			}
 		}

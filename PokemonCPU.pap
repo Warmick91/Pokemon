@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="001FEC836946F3A9">
+  <PROJECT FORMAT="1.00" NAME="PokemonCPU" AUTHOR="Administrator" CREATED="2022.08.05 08:33:24" MODIFIED="2022.08.05 10:22:54">
+    <DIAGRAMS>
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="CPU Action" CREATED="2022.08.05 08:33:31" MODIFIED="2022.08.05 10:22:54">
+        <LAYOUT FORMAT="1.00" COLUMNS="6" ROWS="9">
+          <ENTRIES>
+            <ENTRY COLUMN="0" ROW="3">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="11">
+                <TEXT><![CDATA[useSuperPotion()]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="21">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="3">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="7">
+                <TEXT><![CDATA[HP <40% ?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="6">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="12">
+                <TEXT><![CDATA[useRegularPotion()]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="14">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="8">
+              <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
+                <TEXT><![CDATA[Ende]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="0" ANCHOR="True">
+              <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
+                <TEXT><![CDATA[CPU Action]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="1">
+              <FIGURE SUBTYPE="PapStart" FORMAT="1.00" ID="1">
+                <TEXT><![CDATA[Start]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="2">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="47">
+                <TEXT><![CDATA[Can any attack finish the battle?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="3">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="4">
+                <TEXT><![CDATA[HP < 60% ?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="5">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="32">
+                <TEXT><![CDATA[chooseMatchingAttack() (70% chance)]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="44">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="2">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="54">
+                <TEXT><![CDATA[chooseMaxDmgAttack()]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="3">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="27">
+                <TEXT><![CDATA[checkOpponentsType() and compare()]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="4">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="73">
+                <TEXT><![CDATA[isOpponentStatEffectTurn != 0 ?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="5">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="33">
+                <TEXT><![CDATA[matchingAttack exists && available?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="4" ROW="4">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="75">
+                <TEXT><![CDATA[chooseStatChangeMove()]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="4" ROW="5">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="62">
+                <TEXT><![CDATA[chooseRandomAttack()]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="4" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="65">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="5" ROW="2">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="60">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="5" ROW="4">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="77">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="5" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="70">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+          </ENTRIES>
+        </LAYOUT>
+        <CONNECTIONS>
+          <CONNECTION FORMAT="1.00" ID="3" FROM="1" TO="47" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="46" FROM="44" TO="14" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="57" FROM="4" TO="7" TEXT="yes" />
+          <CONNECTION FORMAT="1.00" ID="10" FROM="7" TO="11" TEXT="yes" />
+          <CONNECTION FORMAT="1.00" ID="13" FROM="7" TO="12" TEXT="no" />
+          <CONNECTION FORMAT="1.00" ID="15" FROM="12" TO="14" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="41" FROM="14" TO="2" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="23" FROM="21" TO="14" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="20" FROM="11" TO="21" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="56" FROM="4" TO="27" TEXT="no" />
+          <CONNECTION FORMAT="1.00" ID="30" FROM="27" TO="73" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="40" FROM="33" TO="62" TEXT="no" />
+          <CONNECTION FORMAT="1.00" ID="37" FROM="33" TO="32" TEXT="yes" />
+          <CONNECTION FORMAT="1.00" ID="43" FROM="32" TO="44" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="55" FROM="47" TO="4" TEXT="no" />
+          <CONNECTION FORMAT="1.00" ID="50" FROM="47" TO="54" TEXT="yes" />
+          <CONNECTION FORMAT="1.00" ID="67" FROM="65" TO="44" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="59" FROM="54" TO="60" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="64" FROM="62" TO="65" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="72" FROM="70" TO="65" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="78" FROM="77" TO="70" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="74" FROM="73" TO="33" TEXT="no" />
+          <CONNECTION FORMAT="1.00" ID="76" FROM="73" TO="75" TEXT="yes" />
+          <CONNECTION FORMAT="1.00" ID="69" FROM="60" TO="77" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="79" FROM="75" TO="77" TEXT="" />
+        </CONNECTIONS>
+      </DIAGRAM>
+    </DIAGRAMS>
+  </PROJECT>
+</FRAME>

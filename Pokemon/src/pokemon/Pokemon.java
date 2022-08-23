@@ -52,8 +52,8 @@ public abstract class Pokemon {
 
 	public void checkIfStillBurnt(Pokemon pok) {
 		if (pok.hasBurntCondition == true) {
-			System.out.println(
-					pok.getName() + " takes " + (int)(pok.getHealthPoints() * 0.05) + " damage from the burnt condition!");
+			System.out.println(pok.getName() + " takes " + (int) (pok.getHealthPoints() * 0.05)
+					+ " damage from the burnt condition!");
 			pok.setHealthPoints(pok.getHealthPoints() - pok.getHealthPoints() * 0.05);
 			pok.setBurntConditionTurns(pok.getBurntConditionTurns() - 1);
 			if (pok.getBurntConditionTurns() == 0) {

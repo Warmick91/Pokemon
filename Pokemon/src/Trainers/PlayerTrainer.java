@@ -3,16 +3,8 @@ package Trainers;
 import javax.swing.JOptionPane;
 
 import pokemon.Pokemon;
-import potions.RegularPotion;
-import potions.SuperPotion;
 
-public class PlayerTrainer {
-	private String name;
-	private int regPotions;
-	private int supPotions;
-	private int pokeballs;
-	RegularPotion regularPotion = new RegularPotion();
-	SuperPotion superPotion = new SuperPotion();
+public class PlayerTrainer extends Trainer {	
 
 	public PlayerTrainer(String name, int regPotions, int supPotions, int pokeballs) {
 		this.name = name;
@@ -27,39 +19,19 @@ public class PlayerTrainer {
 				"Choose action:\r\n 1) Attack\r\n 2) Defend\r\n 3) Use potion\r\n 4) Throw a pokeball");
 		return actionChoice;
 	}
+	
+	public void trainerAction(Pokemon pok1, Pokemon pok2) throws InterruptedException {
 
-	// Getters and setters
-	public String getName() {
-		return name;
+		checkAllStats(pok1, pok2);
+
+		// Action choice
+		String choiceAction = PlayerTrainer.chooseActionPrompt();
+		int choiceActionInt = Integer.parseInt(choiceAction);
+		this.chooseAction(choiceActionInt, pok1, pok2);
+
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getRegPotions() {
-		return regPotions;
-	}
-
-	public void setRegPotions(int potions) {
-		this.regPotions = potions;
-	}
-
-	public int getSupPotions() {
-		return supPotions;
-	}
-
-	public void setSupPotions(int potions) {
-		this.supPotions = potions;
-	}
-
-	public int getPokeballs() {
-		return pokeballs;
-	}
-
-	public void setPokeballs(int pokeballs) {
-		this.pokeballs = pokeballs;
-	}
+	
 
 	// Execute attack method
 	boolean stopLoop;
