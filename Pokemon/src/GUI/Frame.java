@@ -1,16 +1,20 @@
 package GUI;
 
-import java.awt.Color;
 import javax.swing.JFrame;
 
+
 public class Frame extends JFrame {
-	
-	public Frame(){
-		
-		this.setTitle("PoCeMon");	
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+	private static final long serialVersionUID = 1L;
+
+
+	public Frame () {
+
+		this.setTitle("PoCeMon");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
+		this.setResizable(false);
 		this.setSize(700, 700);
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);	
+		this.setVisible(true);
 	}
 }
