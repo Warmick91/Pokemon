@@ -1,12 +1,30 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class GUIActionWindow {
 
 	public GUIActionWindow() {
+
+		// Fonts
+		Font retroFont = null;
+
+		try {
+			retroFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Pixeboy.ttf")).deriveFont(70f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Pixeboy.ttf")));
+		} catch (IOException | FontFormatException e) {
+
+		}
 
 		// Main frame canvas
 		ComponentPanel canvas = new ComponentPanel();
@@ -41,14 +59,22 @@ public class GUIActionWindow {
 		// Grass Symbol
 		ImageLabel grassSymbol = new ImageLabel();
 //		grassSymbol.setBackground(Color.green); // delete
-		grassSymbol.setBounds(fireSymbol.getX() + fireSymbol.getWidth() / 2, fireSymbol.getY() + fireSymbol.getHeight() - 20,
-				fireSymbol.getWidth(), fireSymbol.getHeight());
+		grassSymbol.setBounds(fireSymbol.getX() + fireSymbol.getWidth() / 2,
+				fireSymbol.getY() + fireSymbol.getHeight() - 20, fireSymbol.getWidth(), fireSymbol.getHeight());
 		ImageIcon grassSymbolIMG = new ImageIcon("images/grassSymbol.png");
 		grassSymbol.setIcon(grassSymbolIMG);
 
-		//Start button
+		// Start button
 		OptionButton startButton = new OptionButton();
-		//startButton.setBounds(null);
+		startButton.setBounds(canvas.getWidth() / 2 - 100, grassSymbol.getY() + grassSymbol.getHeight() + 30, 200, 70);
+		startButton.setText("START");
+		startButton.setVerticalTextPosition(JButton.CENTER);
+		startButton.setHorizontalTextPosition(JButton.CENTER);
+		startButton.setFont(retroFont);
+		startButton.setOpaque(false);
+		startButton.setContentAreaFilled(false);
+		startButton.setBorderPainted(false);
+		startButton.setForeground(Color.yellow);
 		
 		// Compilation
 		Frame frame = new Frame();
@@ -57,5 +83,6 @@ public class GUIActionWindow {
 		canvas.add(fireSymbol);
 		canvas.add(waterSymbol);
 		canvas.add(grassSymbol);
+		canvas.add(startButton);
 	}
 }

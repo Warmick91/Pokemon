@@ -12,7 +12,7 @@ public class Frame extends JFrame {
 		this.setTitle("PoCeMon");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setSize(700, 700);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
