@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 import GUI.Frame;
-import GUI.GUIActionWindow;
+import GUI.GUIWindow;
 import Trainers.CPUTrainer;
 import Trainers.PlayerTrainer;
 import pokemon.Bulbasaur;
@@ -30,7 +30,7 @@ public class IndigoLeague {
 
 		
 		//GUI
-		GUIActionWindow GUI = new GUIActionWindow();
+		GUIWindow GUI = new GUIWindow();
 		
 //		// Frame frame = new Frame();
 //
