@@ -3,14 +3,12 @@ package GUI;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JButton;
 
-public class OptionButton extends JButton implements MouseListener {
+public class OptionButton extends JButton {
 	private static final long serialVersionUID = 1L;
 
 	protected Font retroFont = null;
@@ -24,39 +22,8 @@ public class OptionButton extends JButton implements MouseListener {
 				} catch (IOException | FontFormatException e) {
 				}
 				
-				this.addMouseListener(this);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+				this.setFocusable(false);
+				
+	}	
 
 }
