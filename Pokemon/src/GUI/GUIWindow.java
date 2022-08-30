@@ -29,7 +29,7 @@ public class GUIWindow extends JFrame {
 		// Main frame canvas
 		canvas = new JPanel();
 		canvas.setLayout(null);
-		canvas.setBounds(0, 0, 800, 800);
+		canvas.setBounds(0, 0, 1100, 800);
 		canvas.setBackground(Color.black);				
 		
 		welcomeScreen = new WelcomeScreen(canvas);
