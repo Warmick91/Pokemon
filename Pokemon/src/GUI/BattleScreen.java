@@ -25,6 +25,7 @@ public class BattleScreen extends Screen implements MouseListener {
 	public BattleScreen(JPanel panelTemplate) {
 		this.panel = panelTemplate;
 		callBattleScreen(panel);
+		startBattleDialog(panel);
 	}
 
 	public void callBattleScreen(JPanel canvas) {
@@ -39,11 +40,14 @@ public class BattleScreen extends Screen implements MouseListener {
 		
 		background = new JLabel();
 		background.setBounds(0,0, 1100, 800);		
-		background.setIcon(bgBackground);
-		
-		
+		background.setIcon(bgBackground);		
 		canvas.add(background);
 
+	}
+	
+	private void startBattleDialog(JPanel canvas) {
+		JLabel dialogLabel = new JLabel();
+		canvas.add(dialogLabel);
 	}
 	
 	

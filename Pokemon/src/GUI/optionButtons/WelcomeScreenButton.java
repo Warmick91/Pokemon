@@ -13,7 +13,7 @@ public class WelcomeScreenButton extends OptionButton {
 		this.setText(text);
 		this.setVerticalTextPosition(JButton.CENTER);
 		this.setHorizontalTextPosition(JButton.CENTER);
-		this.setFont(retroFont);
+		this.setFont(retroFontButtons);
 		this.setOpaque(false);
 		this.setContentAreaFilled(false); // button's background
 		this.setBorderPainted(false);

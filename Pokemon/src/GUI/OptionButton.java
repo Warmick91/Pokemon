@@ -11,19 +11,19 @@ import javax.swing.JButton;
 public class OptionButton extends JButton {
 	private static final long serialVersionUID = 1L;
 
-	protected Font retroFont = null;
-	
+	protected Font retroFontButtons = null;
+
 	public OptionButton() {
 		// Estabilish fonts
-				try {
-					retroFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Pixeboy.ttf")).deriveFont(70f);
-					GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-					ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Pixeboy.ttf")));
-				} catch (IOException | FontFormatException e) {
-				}
-				
-				this.setFocusable(false);
-				
-	}	
+		try {
+			retroFontButtons = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Pixeboy.ttf")).deriveFont(70f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("fonts/Pixeboy.ttf")));
+		} catch (IOException | FontFormatException e) {
+		}
+
+		this.setFocusable(false);
+
+	}
 
 }
